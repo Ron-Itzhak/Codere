@@ -42,9 +42,9 @@ const NewOddsForm = observer(() => {
   const defaultValues = {
     homeTeam: "",
     awayTeam: "",
-    drawOdd: 0,
-    homeTeamOdd: 0,
-    awayTeamOdd: 0,
+    drawOdd: "0",
+    homeTeamOdd: "0",
+    awayTeamOdd: "0",
   };
 
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
