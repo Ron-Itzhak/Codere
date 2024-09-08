@@ -42,9 +42,9 @@ const NewOddsForm = observer(() => {
   const defaultValues = {
     homeTeam: "",
     awayTeam: "",
-    drawOdd: "0",
-    homeTeamOdd: "0",
-    awayTeamOdd: "0",
+    drawOdd: 0,
+    homeTeamOdd: 0,
+    awayTeamOdd: 0,
   };
 
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
@@ -77,13 +77,15 @@ const NewOddsForm = observer(() => {
       .transform((val) => Number(val))
       .refine((val) => !isNaN(val), {
         message: "Home Team Odd Must be a number",
-      }),
+      })
+      .refine((val) => val > 0, { message: "Number must be bigger than 0" }),
     drawOdd: z
       .string()
       .transform((val) => Number(val))
       .refine((val) => !isNaN(val), {
         message: "Home Team Odd Must be a number",
-      }),
+      })
+      .refine((val) => val > 0, { message: "Number must be bigger than 0" }),
     awayTeam: z
       .string()
       .transform((t) => t?.trim())
@@ -93,7 +95,8 @@ const NewOddsForm = observer(() => {
       .transform((val) => Number(val))
       .refine((val) => !isNaN(val), {
         message: "Away Team Odd Must be a number",
-      }),
+      })
+      .refine((val) => val > 0, { message: "Number must be bigger than 0" }),
     dateOfGame: z.date({
       required_error: "A date is required.",
     }),
