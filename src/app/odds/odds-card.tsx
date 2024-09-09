@@ -31,7 +31,13 @@ const OddsCard: React.FC<OddsCardProps> = (props: OddsCardProps) => {
             className="hover:bg-codere-green  w-[100px] h-[60px] bg-white flex-col justify-between items-center"
           >
             <p className="text-codere-txt-grey text-center">
-              {game.sortOrder === 1 ? "X" : index}
+              {game.sortOrder === 1 
+  ? "X" 
+  : game.sortOrder === 0 
+    ? "1" 
+    : game.sortOrder === 2 
+      ? "2" 
+      : index}
             </p>
             <p className=" text-codere-txt-blck text-center flex-1">
               {game.odd}
